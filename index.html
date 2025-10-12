@@ -19,7 +19,6 @@
             line-height: 1.6;
             overflow-x: hidden;
             padding-bottom: 20px;
-            scroll-behavior: smooth; /* 添加平滑滚动 */
         }
         
         .container {
@@ -2199,28 +2198,25 @@
             
             // 平滑滚动到顶部函数
             function smoothScrollToTop() {
-                // 使用CSS的scroll-behavior属性实现平滑滚动
-                // 如果浏览器不支持，则使用JavaScript实现
-                if (!('scrollBehavior' in document.documentElement.style)) {
-                    const currentPosition = window.pageYOffset;
-                    const targetPosition = 0;
-                    const distance = targetPosition - currentPosition;
-                    const duration = 500; // 动画持续时间
-                    let start = null;
+                const currentPosition = window.pageYOffset;
+                if (currentPosition > 0) {
+                    const duration = 500;
+                    const start = performance.now();
                     
                     function step(timestamp) {
-                        if (!start) start = timestamp;
                         const progress = timestamp - start;
                         const percentage = Math.min(progress / duration, 1);
                         
                         // 使用缓动函数使滚动更自然
                         const easeInOutCubic = t => t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1;
-                        const scrollAmount = currentPosition + (distance * easeInOutCubic(percentage));
+                        const scrollAmount = currentPosition * (1 - easeInOutCubic(percentage));
                         
-                        window.scrollTo(0, scrollAmount);
+                        window.scrollTo(0, currentPosition - scrollAmount);
                         
                         if (progress < duration) {
                             window.requestAnimationFrame(step);
+                        } else {
+                            window.scrollTo(0, 0);
                         }
                     }
                     
