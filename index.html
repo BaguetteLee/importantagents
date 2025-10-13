@@ -1330,7 +1330,13 @@
                 max-width: 280px;
             }
         }
-    </style>
+    
+/* ===== 修复：市场刚需统计标签强制白色（由GPT追加，最小改动） ===== */
+/* 中文注释：仅作用于“市场刚需”区块，避免影响其他使用 .stat-label 的区域 */
+.market-demand .stat-label{ color:#ffffff !important; opacity:0.95; }
+.market-demand .stat-value{ color:#ffffff !important; } /* 确保数值同为白色，若主题已白色则不影响 */
+
+</style>
 
 <!-- 修复样式：服务对象图标与文字重叠（由GPT插入） -->
 <style>
@@ -1608,6 +1614,10 @@
 }
 
 </style>
+
+  <!-- 修复说明：将不存在的 Font Awesome 图标 'fa-analytics' 更换为 'fa-chart-line'；其余结构与样式保持不变。 -->
+
+  <!-- 变更说明：将“商家有服务需求 / 年增长率 / 市场规模”三项标签改为白色，仅限市场刚需区块 -->
 </head>
 <body>
     <!-- 固定头部导航 -->
@@ -1669,7 +1679,7 @@
                 
                 <div class="highlight-box">
                     <div class="highlight-title">项目核心价值</div>
-                    <p>通过专业化的服务对接平台，帮助客户解决经营中的高频服务需求，提升运营效率，降低人力成本，实现业务增长。</p>
+                    <p>通过专业化的服务对接任务发布与接单者，帮助服务对象解决经营中的高频服务需求，提升直播间,网店,视频,账号,团队等等互联网项目的运营效率与数据，降低人力成本，实现业务增长。</p>
                 </div>
             </div>
             
@@ -1684,7 +1694,7 @@
                     <div class="client-icon"><i class="fas fa-building"></i></div>
                     <div class="client-content">
                         <h3>电商机构</h3>
-                        <p>包括代运营公司、电商服务商等专业机构，需要大量数据优化服务支持客户业务，如直播间数据优化、短视频数据优化、团购数据优化等。</p>
+                        <p>包括代MCN 机构、团长、电商服务等专业机构，需要大量数据优化服务支持客户业务，如直播间数据优化、短视频数据优化、团购数据优化等。</p>
                     </div>
                 </div>
                 
@@ -1708,7 +1718,7 @@
                     <div class="client-icon"><i class="fas fa-video"></i></div>
                     <div class="client-content">
                         <h3>主播与网红</h3>
-                        <p>直播带货主播、内容创作者、KOL等，需要专业的数据优化服务，如直播间数据提升、短视频数据优化、粉丝互动数据优化等。</p>
+                        <p>直播带货主播、内容创作者、平台博主等，需要专业的数据优化服务，如直播间数据提升、短视频数据优化、粉丝互动数据优化等。</p>
                     </div>
                 </div>
             </div>
@@ -1800,14 +1810,14 @@
                             <div class="feature-icon"><i class="fas fa-bolt"></i></div>
                             <h3 class="feature-title">快速发布与接单</h3>
                         </div>
-                        <p>用户一键发布任务，平台智能匹配接单人员，实现秒级响应，大幅缩短项目启动时间。</p>
+                        <p>用户一键发布任务，平台匹配合适的接单人员自由接单，大幅提升接单效率。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-header">
                             <div class="feature-icon"><i class="fas fa-cogs"></i></div>
                             <h3 class="feature-title">智能匹配系统</h3>
                         </div>
-                        <p>基于AI算法的智能匹配系统，精准连接需求方与服务方，提高对接效率和成功率。</p>
+                        <p>基于智能匹配系统，精准连接需求方与服务方，提高对接效率和成功率，提高匹配效率。</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-header">
@@ -1839,7 +1849,7 @@
                             <div class="stat-label">年增长率</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-value">500亿+</div>
+                            <div class="stat-value">100亿+</div>
                             <div class="stat-label">市场规模</div>
                         </div>
                     </div>
@@ -2188,7 +2198,7 @@
                     <div class="profit-icon"><i class="fas fa-money-bill-wave"></i></div>
                     <div class="profit-content">
                         <h3>任务交易抽成</h3>
-                        <p>平台对所有成功交易的任务收取<span class="profit-amount">15%-20%</span>的服务费，作为主要收入来源</p>
+                        <p>总代理对所有成功交易的任务收取<span class="profit-amount">25%左右</span>的服务费，作为主要收入来源</p>
                     </div>
                 </div>
                 
@@ -2216,14 +2226,6 @@
                     </div>
                 </div>
                 
-                <div class="profit-card">
-                    <div class="profit-icon"><i class="fas fa-gift"></i></div>
-                    <div class="profit-content">
-                        <h3>平台奖励政策</h3>
-                        <p>根据业绩达成情况，平台提供<span class="profit-amount">高额奖金和额外分成</span>，激励省代理拓展业务</p>
-                    </div>
-                </div>
-            </div>
         </section>
         
         <!-- 省级代理内容 -->
@@ -2246,7 +2248,7 @@
                     <div class="benefit-icon"><i class="fas fa-gem"></i></div>
                     <div class="benefit-content">
                         <h3>高额分成比例</h3>
-                        <p>享受行业内具有竞争力的高额分成比例，具体比例根据代理级别和业绩浮动。</p>
+                        <p>享受行业内具有竞争力的高额分成比例，具体比例根据合同约定。</p>
                     </div>
                 </div>
                 
@@ -2449,7 +2451,7 @@
                 </div>
                 
                 <div class="business-card">
-                    <div class="business-icon"><i class="fas fa-analytics"></i></div>
+                    <div class="business-icon"><i class="fas fa-chart-line"></i></div>
                     <div class="business-title">数据分析服务</div>
                     <div class="business-desc">提供业务数据分析服务，帮助代理商优化运营策略。</div>
                 </div>
