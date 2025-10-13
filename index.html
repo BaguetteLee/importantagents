@@ -205,14 +205,14 @@
             color: #212529;
         }
         
-        /* 服务对象 */
+        /* 服务对象 - 修复图标重叠问题 */
         .clients-section {
             margin-top: 30px;
         }
         
         .client-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* 改为顶部对齐 */
             background: white;
             border-radius: 12px;
             padding: 20px;
@@ -231,7 +231,11 @@
             color: white;
             font-size: 1.5rem;
             margin-right: 20px;
-            flex-shrink: 0;
+            flex-shrink: 0; /* 防止图标被压缩 */
+        }
+        
+        .client-content {
+            flex: 1; /* 让内容区域占据剩余空间 */
         }
         
         .client-content h3 {
@@ -368,8 +372,9 @@
             color: #212529;
         }
         
+        /* 修改后的市场刚需模块样式 */
         .market-demand {
-            background: linear-gradient(135deg, #ff006e, #ff6b9d);
+            background: linear-gradient(135deg, #4361ee, #7209b7);
             color: white;
             border-radius: 12px;
             padding: 25px;
@@ -701,10 +706,19 @@
             transform: scale(0.98);
         }
         
+        /* 修改客户群体图标样式 */
         .client-icon, .partner-icon {
             font-size: 2rem;
-            color: #3a86ff;
+            color: white; /* 改为白色图标 */
             margin-bottom: 10px;
+            background: linear-gradient(135deg, #3a86ff, #8338ec); /* 添加背景色 */
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
         }
         
         .client-title, .partner-title {
@@ -767,7 +781,7 @@
             font-size: 1.1rem;
         }
         
-        /* 经营项目列表 */
+        /* 经营项目列表 - 修复图标显示问题 */
         .business-list {
             display: flex;
             flex-direction: column;
@@ -784,6 +798,7 @@
             align-items: center;
         }
         
+        /* 修复经营范围图标显示问题 */
         .business-icon {
             width: 50px;
             height: 50px;
@@ -792,7 +807,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: white; /* 确保图标是白色 */
             font-size: 1.3rem;
             margin-right: 15px;
             flex-shrink: 0;
@@ -1049,7 +1064,7 @@
             color: #666;
         }
         
-        /* 业务支持 */
+        /* 业务支持 - 修复图标显示问题 */
         .business-support {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1065,10 +1080,15 @@
             text-align: center;
         }
         
-        .business-icon {
+        /* 修复业务支持图标显示 */
+        .business-support .business-icon {
             font-size: 2rem;
             color: #3a86ff;
             margin-bottom: 10px;
+            background: transparent; /* 移除背景色 */
+            width: auto; /* 恢复默认宽度 */
+            height: auto; /* 恢复默认高度 */
+            margin: 0 auto 15px; /* 居中显示 */
         }
         
         .business-title {
@@ -1251,6 +1271,53 @@
             opacity: 1;
         }
         
+        /* 代理要求样式 */
+        .requirements-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .requirement-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+        }
+        
+        .requirement-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3a86ff, #8338ec);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .requirement-content {
+            flex: 1;
+        }
+        
+        .requirement-title {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #212529;
+        }
+        
+        .requirement-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
         /* 响应式调整 */
         @media (max-width: 600px) {
             .contact-footer .footer-buttons {
@@ -1264,6 +1331,283 @@
             }
         }
     </style>
+
+<!-- 修复样式：服务对象图标与文字重叠（由GPT插入） -->
+<style>
+
+/* ====== 修复：服务对象图标与文字重叠（最小改动覆盖样式） ====== */
+/* 中文注释：限定“项目简介 > 服务对象”作用域，确保横向排版与间距不被全局规则覆盖 */
+.clients-section .client-item .client-icon{
+  width:60px; height:60px;
+  background:linear-gradient(135deg,#3a86ff,#8338ec);
+  border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:1.5rem;
+  margin-right:20px;           /* 与右侧文字保持间距 */
+  flex-shrink:0;               /* 窄屏不被压缩 */
+}
+
+/* 中文注释：把“客户群体/合作群体卡片”的大图标样式限定在网格容器内，避免全局覆盖 */
+.client-cards .client-card .client-icon,
+.partner-cards .partner-card .partner-icon{
+  font-size:2rem; color:#fff;
+  background:linear-gradient(135deg,#3a86ff,#8338ec);
+  width:70px; height:70px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 15px;
+}
+
+/* 中文注释：为防止历史 CSS 使用 .client-icon,.partner-icon 的全局写法，这里用更高优先级的选择器兜底一次 */
+.clients-section .client-item .client-icon{position:relative;} /* 提升结合度以赢得优先级 */
+
+</style>
+
+<!-- 悬浮导航栏防换行优化（由GPT注入） -->
+<style>
+
+/* ====== 悬浮导航栏（sticky header）防换行优化（由GPT追加） ====== */
+/* 中文注释：不允许标签文字换行，超窄屏改为横向滑动；同时保持点击热区与激活态 */
+.sticky-header .sticky-header-content{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+}
+.sticky-header .sticky-logo{
+  white-space:nowrap;            /* 中文注释：LOGO不换行 */
+  overflow:hidden;
+  text-overflow:ellipsis;        /* 中文注释：超长时省略号 */
+  flex: 0 1 auto;
+  max-width: 45vw;               /* 中文注释：给右侧导航留空间，避免被挤换行 */
+}
+.sticky-header .sticky-nav{
+  display:flex;
+  flex-wrap:nowrap;              /* 中文注释：不换行 */
+  gap:6px;
+  overflow-x:auto;               /* 中文注释：小屏可横向滑动 */
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;          /* 中文注释：隐藏滚动条（Firefox） */
+}
+.sticky-header .sticky-nav::-webkit-scrollbar{ display:none; } /* 中文注释：隐藏滚动条（WebKit） */
+
+.sticky-header .sticky-nav-tab{
+  white-space:nowrap;            /* 中文注释：文本不换行 */
+  flex:0 0 auto;                 /* 中文注释：每个标签维持自身宽度，不被压缩 */
+  padding:8px 12px;              /* 中文注释：维持可点面积 */
+  line-height:1;                 /* 中文注释：避免双行高度抖动 */
+}
+
+/* 中文注释：当屏幕较宽时，允许导航自然占满且不需要滚动 */
+@media (min-width: 420px){
+  .sticky-header .sticky-logo{ max-width: 40vw; }
+}
+@media (min-width: 560px){
+  .sticky-header .sticky-logo{ max-width: 35vw; }
+}
+
+</style>
+
+<!-- 悬浮导航栏单行自适应（无横向滑动）补丁样式 · 由GPT注入 -->
+<style>
+
+/* ====== 悬浮导航栏不换行 · 无横向滑动 · 字体与布局自适应（由GPT追加） ====== */
+/* 中文注释：目标是在小屏保持单行且不滚动，通过减小字号/内边距与优化占比实现 */
+.sticky-header{
+  /* 适度压缩整体高度，减轻占屏 */
+  --nav-fs: clamp(12px, 3.2vw, 14px);   /* 中文注释：导航文字随屏宽自适应 */
+  --nav-pad-x: clamp(8px, 2.4vw, 12px); /* 中文注释：左右内边距自适应 */
+  --nav-gap: clamp(4px, 1.6vw, 8px);    /* 中文注释：标签间距自适应 */
+}
+
+.sticky-header .sticky-header-content{
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  padding: 8px 10px;
+}
+
+/* 中文注释：Logo 占比更小，避免挤压导航 */
+.sticky-header .sticky-logo{
+  white-space:nowrap;
+  overflow:hidden; text-overflow:ellipsis;
+  flex: 0 1 auto;
+  max-width: 32vw; /* 原45vw -> 32vw，给导航更多空间 */
+  font-size: clamp(14px, 3.4vw, 16px);
+}
+
+/* 中文注释：导航区单行不换行；不再横向滑动（overflow-x:hidden） */
+.sticky-header .sticky-nav{
+  display:flex; align-items:center;
+  flex-wrap:nowrap; 
+  gap: var(--nav-gap);
+  overflow-x:hidden;               /* 取消横向滑动 */
+}
+
+/* 中文注释：每个标签缩小字号与内边距，保持可点面积同时节省横向空间 */
+.sticky-header .sticky-nav-tab{
+  white-space:nowrap;
+  flex:0 0 auto; 
+  padding: 6px var(--nav-pad-x);
+  line-height: 1.1;
+  font-size: var(--nav-fs);
+  border-radius: 10px;
+}
+
+/* 中文注释：在极窄屏时（≤360px），进一步压缩边距与Logo占比 */
+@media (max-width: 360px){
+  .sticky-header .sticky-header-content{ padding: 6px 8px; }
+  .sticky-header .sticky-logo{ max-width: 28vw; font-size: 13px; }
+  .sticky-header .sticky-nav{ gap: 4px; }
+  .sticky-header .sticky-nav-tab{ padding: 5px 8px; font-size: 12px; }
+}
+
+/* 中文注释：在较宽屏（≥560px），适度放松 */
+@media (min-width: 560px){
+  .sticky-header .sticky-logo{ max-width: 36vw; }
+  .sticky-header .sticky-nav{ gap: 8px; }
+  .sticky-header .sticky-nav-tab{ padding: 8px 12px; font-size: 14px; }
+}
+
+</style>
+
+<!-- 四等分平铺导航（由GPT注入） -->
+<style>
+
+/* ====== 悬浮导航：四等分平铺（由GPT追加） =========================
+   中文注释：
+   1) 将导航选项卡等分为4列，单行展示；
+   2) 文字不换行，居中对齐；在极窄屏时自动略缩字号；
+   3) 保持点击热区与当前激活态样式不变（沿用你现有的class）。
+   ================================================================== */
+.sticky-header{
+  --nav-fs: clamp(12px, 3.2vw, 14px);       /* 自适应导航文字大小 */
+  --nav-pad-x: clamp(8px, 2.4vw, 12px);     /* 自适应左右内边距 */
+  --nav-gap: 6px;                            /* 标签间距 */
+}
+
+.sticky-header .sticky-nav{
+  display:flex; align-items:center;
+  flex-wrap:nowrap;                          /* 单行 */
+  gap: var(--nav-gap);
+  overflow-x:hidden;                         /* 不滚动 */
+  width:100%;
+}
+
+.sticky-header .sticky-nav-tab{
+  /* 四等分：每个标签占 25% 宽度，允许略微收缩以适应边距 */
+  flex: 1 1 25%;
+  min-width: 0;                              /* 允许在极窄屏挤压而不溢出容器 */
+  text-align:center;
+  white-space:nowrap;                        /* 文本不换行 */
+  padding: 8px var(--nav-pad-x);
+  font-size: var(--nav-fs);
+  line-height: 1.1;
+  border-radius: 10px;
+}
+
+/* 超窄屏进一步压缩：≤360px */
+@media (max-width: 360px){
+  .sticky-header .sticky-nav-tab{
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+}
+
+/* 宽屏稍放松：≥560px */
+@media (min-width: 560px){
+  .sticky-header .sticky-nav-tab{
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+}
+
+</style>
+
+<!-- 导航图标与文字对齐修复（由GPT注入） -->
+<style>
+
+/* ====== 导航标签图标/方块与文字不居中 · 对齐修复（由GPT追加） =================
+   兼容多种结构：<i> / <svg> / .tab-icon / .tab-dot / .tab-box / <span> 组合
+   策略：将标签设为flex容器，水平与垂直都居中；为图标设定统一尺寸与基线。
+   ========================================================================= */
+.sticky-header .sticky-nav-tab{
+  display:flex;                          /* 中文注释：统一使用flex容器 */
+  align-items:center;                    /* 中文注释：垂直居中图标与文字 */
+  justify-content:center;                /* 中文注释：整体居中（四等分内） */
+  gap: 6px;                              /* 中文注释：图标与文字间距 */
+  line-height: 1.2;                      /* 中文注释：避免文本上下抖动 */
+}
+
+/* 中文注释：常见图标/方块统一为inline-flex并锁定尺寸，避免基线偏移 */
+.sticky-header .sticky-nav-tab .tab-icon,
+.sticky-header .sticky-nav-tab .tab-dot,
+.sticky-header .sticky-nav-tab .tab-box,
+.sticky-header .sticky-nav-tab i,
+.sticky-header .sticky-nav-tab svg{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  vertical-align: middle;                /* 中文注释：与文本基线对齐的兜底 */
+}
+
+/* 中文注释：若方块是用::before生成，确保与文本居中 */
+.sticky-header .sticky-nav-tab::before{
+  /* 注意：只有当原样式已有::before时才会生效；不存在则忽略 */
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  content: attr(data-icon);              /* 中文注释：不改变原有内容，若无则为空 */
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+/* 中文注释：文本容器（若存在 .label/.text）基线统一 */
+.sticky-header .sticky-nav-tab .label,
+.sticky-header .sticky-nav-tab .text{
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.2;
+}
+
+/* 中文注释：极窄屏下仍保持居中与可点击 */
+@media (max-width: 360px){
+  .sticky-header .sticky-nav-tab{ gap: 4px; }
+}
+
+</style>
+
+<!-- 激活态偏左修复补丁（由GPT注入） -->
+<style>
+
+/* ====== 修正：激活态白色胶囊内文字“偏左”问题 =========================
+   原因：此前为兼容伪元素图标，统一加入了 ::before 占位，导致无图标的标签左侧多出14px空位。
+   处理：当无图标时完全禁用 ::before 占位；保持padding左右对称与flex居中。
+   ===================================================================== */
+.sticky-header .sticky-nav-tab::before{
+  content: none !important;     /* 中文注释：默认不生成伪元素 */
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+}
+
+/* 只有明确带 data-icon 且不为空时，才启用伪元素作为图标 */
+.sticky-header .sticky-nav-tab[data-icon]:not([data-icon=""])::before{
+  content: attr(data-icon);
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+/* 进一步确保内容在胶囊内部水平居中（包含激活态样式时） */
+.sticky-header .sticky-nav-tab{
+  justify-content: center;      /* 中文注释：再次明确水平居中 */
+  text-align: center;           /* 中文注释：文本居中 */
+  padding-left: var(--nav-pad-x);
+  padding-right: var(--nav-pad-x);
+}
+
+</style>
 </head>
 <body>
     <!-- 固定头部导航 -->
@@ -1340,7 +1684,7 @@
                     <div class="client-icon"><i class="fas fa-building"></i></div>
                     <div class="client-content">
                         <h3>电商机构</h3>
-                        <p>包括代运营公司、电商服务商等专业机构，需要大量外包服务支持客户业务，如店铺装修、内容创作、活动策划等。</p>
+                        <p>包括代运营公司、电商服务商等专业机构，需要大量数据优化服务支持客户业务，如直播间数据优化、短视频数据优化、团购数据优化等。</p>
                     </div>
                 </div>
                 
@@ -1348,7 +1692,7 @@
                     <div class="client-icon"><i class="fas fa-shopping-cart"></i></div>
                     <div class="client-content">
                         <h3>电商商家</h3>
-                        <p>各类电商平台的店铺经营者，需要专业服务提升店铺运营效果，如商品拍摄、详情页设计、客服外包等。</p>
+                        <p>各类电商平台的店铺经营者，需要专业数据优化服务提升店铺运营效果，如商品评价优化、店铺评分提升、销量数据优化等。</p>
                     </div>
                 </div>
                 
@@ -1356,7 +1700,7 @@
                     <div class="client-icon"><i class="fas fa-users"></i></div>
                     <div class="client-content">
                         <h3>团购商家</h3>
-                        <p>社区团购、本地生活服务商家，需要线上线下结合的推广与服务支持，如地推活动、社群运营、探店拍摄等。</p>
+                        <p>社区团购、本地生活服务商家，需要线上线下结合的推广与服务支持，如团购销量优化、评价优化、曝光度提升等。</p>
                     </div>
                 </div>
                 
@@ -1364,7 +1708,7 @@
                     <div class="client-icon"><i class="fas fa-video"></i></div>
                     <div class="client-content">
                         <h3>主播与网红</h3>
-                        <p>直播带货主播、内容创作者、KOL等，需要专业的内容创作与优化服务，如视频剪辑、直播策划、粉丝互动等。</p>
+                        <p>直播带货主播、内容创作者、KOL等，需要专业的数据优化服务，如直播间数据提升、短视频数据优化、粉丝互动数据优化等。</p>
                     </div>
                 </div>
             </div>
@@ -1786,32 +2130,32 @@
         <section id="profit" class="content-section">
             <h2 class="section-title">客户群体</h2>
             <p class="section-subtitle">
-                平台服务于多元化的客户群体，满足不同行业的任务分发需求。
+                平台服务于多元化的客户群体，满足不同行业的数据优化需求。
             </p>
             
             <div class="client-cards">
                 <div class="client-card">
                     <div class="client-icon"><i class="fas fa-shopping-cart"></i></div>
                     <div class="client-title">电商商家</div>
-                    <div class="client-desc">商品拍摄、详情页设计、客服外包、订单处理等</div>
+                    <div class="client-desc">直播间数据优化、短视频数据优化、店铺评价优化、销量数据提升等</div>
                 </div>
                 
                 <div class="client-card">
                     <div class="client-icon"><i class="fas fa-users"></i></div>
                     <div class="client-title">团购商家</div>
-                    <div class="client-desc">地推推广、社群运营、用户调研、活动执行等</div>
+                    <div class="client-desc">团购销量优化、评价优化、曝光度提升、互动数据增强等</div>
                 </div>
                 
                 <div class="client-card">
                     <div class="client-icon"><i class="fas fa-video"></i></div>
                     <div class="client-title">主播与网红</div>
-                    <div class="client-desc">内容创作、视频剪辑、粉丝互动、直播助理等</div>
+                    <div class="client-desc">直播间数据优化、短视频互动优化、粉丝互动提升、打榜数据优化等</div>
                 </div>
                 
                 <div class="client-card">
                     <div class="client-icon"><i class="fas fa-film"></i></div>
                     <div class="client-title">MCN机构</div>
-                    <div class="client-desc">网红孵化、内容策划、账号运营、商业变现等</div>
+                    <div class="client-desc">网红孵化数据支持、内容策划数据优化、账号运营数据提升、商业变现数据增强等</div>
                 </div>
             </div>
             
@@ -1919,6 +2263,53 @@
                     <div class="benefit-content">
                         <h3>平台全方位保障</h3>
                         <p>获得平台技术、运营、市场、培训等全方位支持，降低运营风险，提高成功率。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title" style="margin-top: 40px;">代理要求</h2>
+            <p class="section-subtitle">
+                为确保代理合作质量，我们对省级代理有以下基本要求：
+            </p>
+            
+            <div class="requirements-list">
+                <div class="requirement-item">
+                    <div class="requirement-number">1</div>
+                    <div class="requirement-content">
+                        <div class="requirement-title">互联网经营经验</div>
+                        <div class="requirement-desc">对互联网经营有一定的经验，熟悉线上业务模式</div>
+                    </div>
+                </div>
+                
+                <div class="requirement-item">
+                    <div class="requirement-number">2</div>
+                    <div class="requirement-content">
+                        <div class="requirement-title">合法经营资质</div>
+                        <div class="requirement-desc">拥有企业营业执照或个体户执照，具备合法经营资格</div>
+                    </div>
+                </div>
+                
+                <div class="requirement-item">
+                    <div class="requirement-number">3</div>
+                    <div class="requirement-content">
+                        <div class="requirement-title">价值观一致</div>
+                        <div class="requirement-desc">双方价值观相同，认同平台发展理念和经营模式</div>
+                    </div>
+                </div>
+                
+                <div class="requirement-item">
+                    <div class="requirement-number">4</div>
+                    <div class="requirement-content">
+                        <div class="requirement-title">市场开拓能力</div>
+                        <div class="requirement-desc">有开拓市场的经验与能力，能够快速打开本地市场</div>
+                    </div>
+                </div>
+                
+                <div class="requirement-item">
+                    <div class="requirement-number">5</div>
+                    <div class="requirement-content">
+                        <div class="requirement-title">充足启动资金</div>
+                        <div class="requirement-desc">拥有充足的启动资金，能够支撑初期市场开拓和团队建设</div>
                     </div>
                 </div>
             </div>
